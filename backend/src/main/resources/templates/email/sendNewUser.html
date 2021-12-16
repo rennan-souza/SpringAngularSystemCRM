@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>System CRM</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <h1>System CRM</h1>
+    <p>
+        Olá, <span th:text="${firstName}"></span> <span th:text="${lastName}"></span> utilize esses dados
+        para acessar ao System CRM.
+    </p>
+
+    <strong>Email: </strong><span th:text="${email}"></span> <br>
+    <strong>Senha: </strong><span th:text="${password}"></span> <br>
+
+    <hr>
+
+    <p>Att</p>
+    <h3>System CRM</h3>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<div class="header">
+    <button mat-mini-fab color="" (click)="sidebarExpand()">
+        <mat-icon>menu</mat-icon>
+    </button>
+ 
+    <a routerLink="/" class="header-logo">System CRM</a>
+  
+
+    <div class="header-username-container">
+        <small class="header-username">{{ tokenData.user_name }}</small>
+
+        <button mat-flat-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            SAIR
+        </button>
+    </div>
+</div>
+
+<div class="sidebar-bg" id="sidebarBg" (click)="sidebarExpand()"></div>
+<div class="sidebar" id="sidebar">
+
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <div class="sidebar-link-icon" (click)="closeSidebar()">
+            <mat-icon>dashboarding</mat-icon>
+        </div>
+        <div class="sidebar-link-text">
+            Dashboard
+        </div>
+    </a>
+    <a routerLink="/usuarios" routerLinkActive="active" *ngIf="hasAnyRoles().includes('ROLE_ADMIN')">
+        <div class="sidebar-link-icon" (click)="closeSidebar()">
+            <mat-icon>manage_accounts</mat-icon>
+        </div>
+        <div class="sidebar-link-text">
+            Usuários
+        </div>
+    </a>
+    <a href="#">
+        <div class="sidebar-link-icon" (click)="closeSidebar()">
+            <mat-icon>assignment_turned_in</mat-icon>
+        </div>
+        <div class="sidebar-link-text">
+            Clientes
+        </div>
+    </a>
+    <a href="#">
+        <div class="sidebar-link-icon" (click)="closeSidebar()">
+            <mat-icon>widgets</mat-icon>
+        </div>
+        <div class="sidebar-link-text">
+            Produtos
+        </div>
+    </a>
+    <a href="#">
+        <div class="sidebar-link-icon" (click)="closeSidebar()">
+            <mat-icon>settings</mat-icon>
+        </div>
+        <div class="sidebar-link-text">
+            Meus dados
+        </div>
+    </a>
+</div>
+<div class="content" id="content">
+    <router-outlet></router-outlet>
+</div>

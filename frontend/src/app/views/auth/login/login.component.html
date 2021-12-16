@@ -1,0 +1,38 @@
+<div class="auth-container">
+   
+    <div class="auth-header">
+        System CRM
+    </div>
+
+    <div class="auth-content">
+        
+        <div class="auth-title">
+            <h1>Login</h1>
+        </div>
+
+        <form (ngSubmit)="signin()">
+            <mat-form-field class="base-input" appearance="outline">
+                <mat-label>Email:</mat-label>
+                <input matInput type="email" name="email" [(ngModel)]="userSigninData.username">
+            </mat-form-field>
+
+            <mat-form-field class="base-input" appearance="outline">
+                <mat-label>Senha:</mat-label>
+                <input matInput type="password" name="password" [(ngModel)]="userSigninData.password">
+            </mat-form-field>
+
+            
+
+            <div [hidden]="loader">
+                <button mat-flat-button color="primary" style="width: 100%; height: 50px;">
+                    <mat-icon>login</mat-icon>
+                    Entrar
+                </button>
+            </div>
+
+            <div *ngIf="loader" style="text-align: center;">
+                <strong>Carregando...</strong>
+            </div>
+        </form>
+    </div>
+</div>
