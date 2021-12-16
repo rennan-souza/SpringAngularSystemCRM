@@ -1,0 +1,30 @@
+<h1>Tem certeza que deseja excluir o usuário?</h1>
+<ul>
+    <li><strong>ID: </strong>{{ user.id }}</li>
+    <li><strong>Nome: </strong>{{ user.firstName }}</li>
+    <li><strong>Sobrenome: </strong>{{ user.lastName }}</li>
+    <li><strong>Email: </strong>{{ user.email }}</li>
+    <li><strong>Perfil: </strong> <span *ngFor="let r of user.roles" class="info">{{ formatRole(r.authority) }}</span> </li>
+</ul>
+
+<div style="margin-top: 10px; display: flex;">
+    <div [hidden]="loader">
+        <button mat-flat-button color="warn" (click)="delete()">
+            <mat-icon>delete</mat-icon>
+            Excluir
+        </button>
+    </div>
+
+    <div *ngIf="loader">
+        <button mat-flat-button color="primary" type="button" disabled  >
+            Carregando...
+        </button>
+    </div>
+    
+    <button mat-flat-button color="primary" routerLink="/usuarios" style="margin-left: 5px;">
+        <mat-icon>cancel</mat-icon>
+        Cancelar
+    </button>
+    
+    
+</div>

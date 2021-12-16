@@ -6,3 +6,59 @@
     </button>
 </div>
 
+<form (ngSubmit)="search()" #form="ngForm">
+    <mat-form-field appearance="outline" class="base-input">
+        <mat-label>Pesquisar</mat-label>
+        <input matInput placeholder="" type="text" [(ngModel)]="searchUser" name="searchUser" (keyup)="search()">
+    </mat-form-field>
+</form>
+
+
+<div *ngIf="totalElements === 0 && progressBar === false">
+    <h1>Nenhum resultado encontrado</h1>
+</div>
+
+<mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+
+<div class="table-container" *ngIf="totalElements > 0">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Perfil</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users">
+                <td>{{ u.id }}</td>
+                <td>{{ u.firstName }}</td>
+                <td>{{ u.lastName }}</td>
+                <td>{{ u.email }}</td>
+                <td><span class="info" *ngFor="let r of u.roles">{{ formatRole(r.authority) }}</span></td>
+                <td>
+                    <button type="button" mat-icon-button color="primary" 
+                        routerLink="/usuarios/editar/{{ u.id }}" *ngIf="tokenData.user_name != u.email">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button color="warn"
+                        routerLink="/usuarios/excluir/{{ u.id }}" *ngIf="tokenData.user_name != u.email">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<mat-paginator 
+    *ngIf="totalElements > 0"
+    [length]="totalElements" 
+    [pageSize]="size" 
+    [pageSizeOptions]="[1, 5, 10, 25, 100]"
+    showFirstLastButtons 
+    (page)="paginate($event)">
+</mat-paginator>

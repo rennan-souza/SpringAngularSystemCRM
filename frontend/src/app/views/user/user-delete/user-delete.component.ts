@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { RoleService } from 'src/app/services/role.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.scss']
+  selector: 'app-user-delete',
+  templateUrl: './user-delete.component.html',
+  styleUrls: ['./user-delete.component.scss']
 })
-export class UserRegisterComponent implements OnInit {
+export class UserDeleteComponent implements OnInit {
 
   user: User;
+
+  id: number = 0;
   roles: Role[] = [];
   loader: boolean = false;
 
@@ -22,12 +25,24 @@ export class UserRegisterComponent implements OnInit {
     private roleService: RoleService,
     private toastr: ToastrService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { 
     this.user = new User();
   }
 
   ngOnInit(): void {
     this.findAllRoles();
+    let params: Observable<Params> = this.activatedRoute.params
+    params.subscribe(urlParams => {
+      this.id = urlParams['id'];
+      if (this.id) {
+        this.userService.findById(this.id).subscribe(response => {
+          this.user = response
+        }, errorResponse => {
+          errorResponse = this.router.navigate(['/usuarios']);
+        })
+      }
+    })
   }
 
   findAllRoles() {
@@ -36,11 +51,11 @@ export class UserRegisterComponent implements OnInit {
     })
   }
 
-  save() {
+  delete() {
     this.loader = true
-    this.userService.save(this.user).subscribe(() => {
-      this.toastr.success("Usuário cadastrado.", "Sucesso");
-      this.router.navigate(['/usuarios']);
+    this.userService.delete(this.user.id ? this.user.id : 0).subscribe(response => {
+      this.toastr.success("Usuário excluído", "Sucesso");
+      this.router.navigate(['/usuarios'])
     }, errorResponse => {
       this.loader = false
       this.toastr.error(errorResponse.error.message, "Erro");
@@ -50,4 +65,5 @@ export class UserRegisterComponent implements OnInit {
   formatRole(value: string) {
     return this.roleService.formatRole(value);
   }
+
 }

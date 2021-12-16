@@ -10,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -20,6 +24,9 @@ import { DashboardComponent } from './views/home/dashboard/dashboard.component';
 import { BaseLayoutComponent } from './views/layout/base-layout/base-layout.component';
 import { UserListComponent } from './views/user/user-list/user-list.component';
 import { UserRegisterComponent } from './views/user/user-register/user-register.component';
+import { getPortuguesePaginatorIntl } from 'src/utils/pagination-pt-br';
+import { UserEditComponent } from './views/user/user-edit/user-edit.component';
+import { UserDeleteComponent } from './views/user/user-delete/user-delete.component';
 
 
 @NgModule({
@@ -29,7 +36,9 @@ import { UserRegisterComponent } from './views/user/user-register/user-register.
     DashboardComponent,
     BaseLayoutComponent,
     UserListComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    UserEditComponent,
+    UserDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +50,10 @@ import { UserRegisterComponent } from './views/user/user-register/user-register.
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -49,6 +62,10 @@ import { UserRegisterComponent } from './views/user/user-register/user-register.
     }),
   ],
   providers: [
+    {
+      provide: MatPaginatorIntl,
+      useValue: getPortuguesePaginatorIntl()
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

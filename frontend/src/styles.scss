@@ -28,6 +28,7 @@ body {
 
 .base-input {
     width: 100%;
+    font-size: 12px;
 }
 
 .auth-container {
@@ -54,16 +55,78 @@ body {
 }
 
 .auth-content {
-    width: 300px;
+    width: 400px;
     max-width: 100%;
     height: auto;
-    padding: 10px;
+    padding: 40px;
+    border: 1px solid #eee;
+    border-radius: 8px;
 }
 
 .auth-title {
     margin-bottom: 40px;
     color: var(--secondary-color);
     text-align: center;
+}
+
+.auth-btn-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forgot-password-link {
+    color: var(--primary-color);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    opacity: 0.6;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+table tr {
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+table tbody tr td {
+    font-size: 12px;
+}
+
+table tbody tr:hover {
+    background: #eee;
+}
+
+table tr th, td {
+    padding: 0 10px 0 10px;
+}
+
+.info {
+    font-size: 10px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.form-container {
+    width: 100%;
+    height: auto;
+    padding: 0 80px 0 80px;
 }
 
 .base-card {
@@ -170,10 +233,12 @@ body {
 
 .sidebar a:hover {
     background: #eee;
+    border-radius: 0 8px 8px 0;
 }
 
 .active {
     background: #eee;
+    border-radius: 0 8px 8px 0;
 }
 
 .content {
@@ -186,10 +251,30 @@ body {
 
 @media(max-width: 768px) {
 
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        height: auto;
+        background: #eee;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    table tr td {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 0 10px 0 10px;
+    }
+
     .sidebar-bg-expand {
         display: unset;
     }
-
 
     .sidebar {
         display: none;
@@ -205,6 +290,17 @@ body {
 }
 
 @media(max-width: 576px) {
+
+    .page-title {
+        align-items: flex-start;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .page-title button {
+        margin-bottom: 10px;
+    }
+
     .header-logo {
         display: none;
     }

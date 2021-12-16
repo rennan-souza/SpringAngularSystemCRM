@@ -19,40 +19,40 @@
 <div class="sidebar-bg" id="sidebarBg" (click)="sidebarExpand()"></div>
 <div class="sidebar" id="sidebar">
 
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        <div class="sidebar-link-icon" (click)="closeSidebar()">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeSidebar()">
+        <div class="sidebar-link-icon">
             <mat-icon>dashboarding</mat-icon>
         </div>
         <div class="sidebar-link-text">
             Dashboard
         </div>
     </a>
-    <a routerLink="/usuarios" routerLinkActive="active" *ngIf="hasAnyRoles().includes('ROLE_ADMIN')">
-        <div class="sidebar-link-icon" (click)="closeSidebar()">
+    <a routerLink="/usuarios" routerLinkActive="active" *ngIf="hasAnyRoles().includes('ROLE_ADMIN')" (click)="closeSidebar()">
+        <div class="sidebar-link-icon">
             <mat-icon>manage_accounts</mat-icon>
         </div>
         <div class="sidebar-link-text">
             Usuários
         </div>
     </a>
-    <a href="#">
-        <div class="sidebar-link-icon" (click)="closeSidebar()">
+    <a href="#" (click)="closeSidebar()">
+        <div class="sidebar-link-icon">
             <mat-icon>assignment_turned_in</mat-icon>
         </div>
         <div class="sidebar-link-text">
             Clientes
         </div>
     </a>
-    <a href="#">
-        <div class="sidebar-link-icon" (click)="closeSidebar()">
+    <a href="#" (click)="closeSidebar()">
+        <div class="sidebar-link-icon">
             <mat-icon>widgets</mat-icon>
         </div>
         <div class="sidebar-link-text">
             Produtos
         </div>
     </a>
-    <a href="#">
-        <div class="sidebar-link-icon" (click)="closeSidebar()">
+    <a href="#" (click)="closeSidebar()">
+        <div class="sidebar-link-icon">
             <mat-icon>settings</mat-icon>
         </div>
         <div class="sidebar-link-text">
