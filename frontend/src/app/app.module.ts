@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { LoginComponent } from './views/auth/login/login.component';
 import { DashboardComponent } from './views/home/dashboard/dashboard.component';
@@ -27,6 +28,12 @@ import { UserRegisterComponent } from './views/user/user-register/user-register.
 import { getPortuguesePaginatorIntl } from 'src/utils/pagination-pt-br';
 import { UserEditComponent } from './views/user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './views/user/user-delete/user-delete.component';
+import { CustomerListComponent } from './views/customer/customer-list/customer-list.component';
+import { CustomerRegisterComponent } from './views/customer/customer-register/customer-register.component';
+import { CustomerEditComponent } from './views/customer/customer-edit/customer-edit.component';
+import { CustomerDeleteComponent } from './views/customer/customer-delete/customer-delete.component';
+import { ProductListComponent } from './views/product/product-list/product-list.component';
+
 
 
 @NgModule({
@@ -39,6 +46,11 @@ import { UserDeleteComponent } from './views/user/user-delete/user-delete.compon
     UserRegisterComponent,
     UserEditComponent,
     UserDeleteComponent,
+    CustomerListComponent,
+    CustomerRegisterComponent,
+    CustomerEditComponent,
+    CustomerDeleteComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +66,7 @@ import { UserDeleteComponent } from './views/user/user-delete/user-delete.compon
     MatProgressBarModule,
     MatSelectModule,
     MatDialogModule,
+    NgxMaskModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

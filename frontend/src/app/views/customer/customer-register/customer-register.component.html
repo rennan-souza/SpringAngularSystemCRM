@@ -1,7 +1,7 @@
 <div class="container">
     <div class="page-title">
-        <h1>Cadastrar usuário</h1>
-        <button mat-flat-button color="accent" routerLink="/usuarios">
+        <h1>Cadastrar cliente</h1>
+        <button mat-flat-button color="accent" routerLink="/clientes">
             <mat-icon>arrow_back</mat-icon>
             Votlar
         </button>
@@ -11,27 +11,34 @@
         <form (ngSubmit)="save()" #form="ngForm">
 
             <mat-form-field appearance="outline" class="base-input">
-                <mat-label>Email:</mat-label>
-                <input matInput type="email" [(ngModel)]="user.email" name="email" #validation="ngModel" required>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="base-input">
                 <mat-label>Nome:</mat-label>
-                <input matInput type="text" [(ngModel)]="user.firstName" name="firstName" #validation="ngModel"
+                <input matInput type="text" [(ngModel)]="customer.firstName" name="firstName" #validation="ngModel"
                     required>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="base-input">
                 <mat-label>Sobrenome:</mat-label>
-                <input matInput type="text" [(ngModel)]="user.lastName" name="lastName" #validation="ngModel" required>
+                <input matInput type="text" [(ngModel)]="customer.lastName" name="lastName" #validation="ngModel"
+                    required>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="base-input">
-                <mat-label>Perfil</mat-label>
-                <mat-select multiple [(ngModel)]="user.roles" name="roles" #validation="ngModel" required>
-                    <mat-option *ngFor="let r of roles" [value]="r">{{ formatRole(r.authority) }}</mat-option>
-                </mat-select>
+                <mat-label>CPF:</mat-label>
+                <input matInput type="text" [(ngModel)]="customer.cpf" name="cpf" #validation="ngModel"
+                    mask="000.000.000-00" required>
             </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Data de nascimento:</mat-label>
+                <input matInput type="date" [(ngModel)]="customer.birthDate" name="birthDate" #validation="ngModel"
+                    required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Email:</mat-label>
+                <input matInput type="email" [(ngModel)]="customer.email" name="email" #validation="ngModel" required>
+            </mat-form-field>
+
 
             <div [hidden]="loader">
                 <button mat-flat-button color="primary" class="auth-button" [disabled]="!form.valid">

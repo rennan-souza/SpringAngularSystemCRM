@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Tem certeza que deseja excluir o cliente?</h1>
+    <ul>
+        <li><strong>ID: </strong>{{ customer.id }}</li>
+        <li><strong>Nome: </strong>{{ customer.firstName }}</li>
+        <li><strong>Sobrenome: </strong>{{ customer.lastName }}</li>
+        <li *ngIf="customer.cpf"><strong>CPF: </strong>{{ customer.cpf | mask: '000.000.000-00' }}</li>
+        <li *ngIf="customer.birthDate"><strong>birthDate: </strong>{{ customer.birthDate | date: 'dd/MM/yyyy' }}</li>
+        <li><strong>Email: </strong>{{ customer.email }}</li>
+    </ul>
+
+    <div style="margin-top: 10px; display: flex;">
+        <div [hidden]="loader">
+            <button mat-flat-button color="warn" (click)="delete()">
+                <mat-icon>delete</mat-icon>
+                Excluir
+            </button>
+        </div>
+
+        <div *ngIf="loader">
+            <button mat-flat-button color="primary" type="button" disabled>
+                Carregando...
+            </button>
+        </div>
+
+        <button mat-flat-button color="primary" routerLink="/clientes" style="margin-left: 5px;">
+            <mat-icon>cancel</mat-icon>
+            Cancelar
+        </button>
+    </div>
+</div>

@@ -23,11 +23,16 @@ $custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $cust
 
 body { 
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: #fff !important;
+    background: #fafafa !important;
 }
 
 .base-input {
     width: 100%;
+    font-size: 12px;
+}
+
+.search-input {
+    width: 250px; 
     font-size: 12px;
 }
 
@@ -59,7 +64,8 @@ body {
     max-width: 100%;
     height: auto;
     padding: 40px;
-    border: 1px solid #eee;
+    background: #fff;
+    border: 1px solid #ccc;
     border-radius: 8px;
 }
 
@@ -85,6 +91,17 @@ body {
 
 .forgot-password-link:hover {
     opacity: 0.6;
+}
+
+.container {
+    border-radius: 4px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.container ul {
+    list-style: none;
 }
 
 .table-container {
@@ -142,8 +159,13 @@ table tr th, td {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.page-title h1 {
+    margin-bottom: 0%;
 }
 
 .header {
@@ -197,6 +219,7 @@ table tr th, td {
     width: 250px;
     height: 100vh;
     background: #fff;
+    border-right: 1px solid #ccc;
     padding-top: 60px;
     position: fixed;
     z-index: 9;
@@ -233,12 +256,12 @@ table tr th, td {
 
 .sidebar a:hover {
     background: #eee;
-    border-radius: 0 8px 8px 0;
+  
 }
 
 .active {
     background: #eee;
-    border-radius: 0 8px 8px 0;
+  
 }
 
 .content {
@@ -299,6 +322,10 @@ table tr th, td {
 
     .page-title button {
         margin-bottom: 10px;
+    }
+
+    .search-input {
+        width: 230px;
     }
 
     .header-logo {

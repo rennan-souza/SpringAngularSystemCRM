@@ -30,6 +30,7 @@ export class BaseLayoutComponent implements OnInit {
   closeSidebar() {
     document.getElementById('sidebarBg')?.classList.remove('sidebar-bg-expand');
     document.getElementById('sidebar')?.classList.remove('sidebar-expand');
+    document.getElementById('content')?.classList.remove('content-expand');
   }
 
   logout() {

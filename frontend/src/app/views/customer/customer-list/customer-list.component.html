@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="page-title">
+        <h1>Clientes</h1>
+        <button mat-flat-button color="accent" routerLink="/clientes/cadastrar">
+            <mat-icon>add</mat-icon>
+            Novo
+        </button>
+    </div>
+    
+    <form (ngSubmit)="search()" #form="ngForm">
+        <mat-form-field appearance="outline" class="search-input">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput placeholder="" type="text" [(ngModel)]="searchCustomer" name="searchCustomer" (keyup)="search()">
+        </mat-form-field>
+    </form>
+    
+    
+    <div *ngIf="totalElements === 0 && progressBar === false">
+        <h1>Nenhum resultado encontrado</h1>
+    </div>
+    
+    <mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+    
+    <div class="table-container" *ngIf="totalElements > 0">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>CPF</th>
+                    <th>Data de nascimento</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of customers">
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.firstName }}</td>
+                    <td>{{ c.lastName }}</td>
+                    <td *ngIf="c.birthDate">{{ c.birthDate | date: 'dd/MM/yyyy' }}</td>
+                    <td *ngIf="c.cpf">{{ c.cpf | mask: '000.000.000-00' }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>
+                        <button type="button" mat-icon-button color="primary" 
+                            routerLink="/clientes/editar/{{ c.id }}">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button type="button" mat-icon-button color="warn"
+                            routerLink="/clientes/excluir/{{ c.id }}">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <mat-paginator 
+        *ngIf="totalElements > 0"
+        [length]="totalElements" 
+        [pageSize]="size" 
+        [pageSizeOptions]="[1, 5, 10, 25, 100]"
+        showFirstLastButtons 
+        (page)="paginate($event)">
+    </mat-paginator>
+</div>

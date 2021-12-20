@@ -35,7 +35,7 @@
             Usuários
         </div>
     </a>
-    <a href="#" (click)="closeSidebar()">
+    <a routerLink="/clientes" routerLinkActive="active" *ngIf="hasAnyRoles().includes('ROLE_OPERATOR')" (click)="closeSidebar()">
         <div class="sidebar-link-icon">
             <mat-icon>assignment_turned_in</mat-icon>
         </div>
@@ -43,7 +43,7 @@
             Clientes
         </div>
     </a>
-    <a href="#" (click)="closeSidebar()">
+    <a routerLink="/produtos" routerLinkActive="active"  (click)="closeSidebar()">
         <div class="sidebar-link-icon">
             <mat-icon>widgets</mat-icon>
         </div>
