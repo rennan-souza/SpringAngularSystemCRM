@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="page-title">
+        <h1>Cadastrar produto</h1>
+        <button mat-flat-button color="accent" routerLink="/produtos">
+            <mat-icon>arrow_back</mat-icon>
+            Votlar
+        </button>
+    </div>
+
+    <div class="form-container">
+        <form (ngSubmit)="save()" #form="ngForm">
+
+         
+            <img [src]="imageSrc" width="200">
+            <div class="form-file-container">
+                <label>Selecione a foto do produto: *</label>
+                <input type="file" [(ngModel)]="product.file" class="form-file-input"
+                    name="file" (change)="onFileChange($event)" #file="ngModel" required>
+            </div>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Nome:</mat-label>
+                <input matInput type="text" [(ngModel)]="product.name" name="name" #validation="ngModel" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline" class="base-input">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput [(ngModel)]="product.description" name="description" #validation="ngModel" required></textarea>
+              </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Price:</mat-label>
+                <input matInput type="text" [(ngModel)]="product.price" name="price" #validation="ngModel"
+                mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Seleciona a categoria do produto:</mat-label>
+                <mat-select  [(ngModel)]="product.category" name="category" #validation="ngModel">
+                    <mat-option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div [hidden]="loader">
+                <button mat-flat-button color="primary" class="auth-button" [disabled]="!form.valid">
+                    <mat-icon>save</mat-icon>
+                    Cadastrar
+                </button>
+            </div>
+
+            <div *ngIf="loader">
+                <button mat-flat-button color="primary" class="auth-button" type="button" disabled>
+                    Carregando...
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { CustomerRegisterComponent } from './views/customer/customer-register/cu
 import { DashboardComponent } from './views/home/dashboard/dashboard.component';
 import { BaseLayoutComponent } from './views/layout/base-layout/base-layout.component';
 import { ProductListComponent } from './views/product/product-list/product-list.component';
+import { ProductRegisterComponent } from './views/product/product-register/product-register.component';
 import { UserDeleteComponent } from './views/user/user-delete/user-delete.component';
 import { UserEditComponent } from './views/user/user-edit/user-edit.component';
 import { UserListComponent } from './views/user/user-list/user-list.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'clientes/excluir/:id', component: CustomerDeleteComponent, canActivate: [ AuthGuard, RoleGuard ], data: { role: 'ROLE_OPERATOR'} },
 
       { path: 'produtos', component: ProductListComponent, canActivate: [ AuthGuard ] },
+      { path: 'produtos/cadastrar', component: ProductRegisterComponent, canActivate: [ AuthGuard ] },
     ]
   }
 ];

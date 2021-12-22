@@ -33,6 +33,7 @@ import { CustomerRegisterComponent } from './views/customer/customer-register/cu
 import { CustomerEditComponent } from './views/customer/customer-edit/customer-edit.component';
 import { CustomerDeleteComponent } from './views/customer/customer-delete/customer-delete.component';
 import { ProductListComponent } from './views/product/product-list/product-list.component';
+import { ProductRegisterComponent } from './views/product/product-register/product-register.component';
 
 
 
@@ -51,6 +52,7 @@ import { ProductListComponent } from './views/product/product-list/product-list.
     CustomerEditComponent,
     CustomerDeleteComponent,
     ProductListComponent,
+    ProductRegisterComponent,
   ],
   imports: [
     BrowserModule,
