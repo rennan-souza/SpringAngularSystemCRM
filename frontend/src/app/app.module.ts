@@ -34,7 +34,7 @@ import { CustomerEditComponent } from './views/customer/customer-edit/customer-e
 import { CustomerDeleteComponent } from './views/customer/customer-delete/customer-delete.component';
 import { ProductListComponent } from './views/product/product-list/product-list.component';
 import { ProductRegisterComponent } from './views/product/product-register/product-register.component';
-
+import { ProductEditComponent } from './views/product/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -53,6 +53,7 @@ import { ProductRegisterComponent } from './views/product/product-register/produ
     CustomerDeleteComponent,
     ProductListComponent,
     ProductRegisterComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,36 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
-import { Product } from 'src/app/models/product';
+import { Product, ProductResponse } from 'src/app/models/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-product-register',
-  templateUrl: './product-register.component.html',
-  styleUrls: ['./product-register.component.scss']
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.scss']
 })
-export class ProductRegisterComponent implements OnInit {
+export class ProductEditComponent implements OnInit {
 
   product: Product;
+  id: number = 0;
   imageSrc: any;
   fileImage: any;
   loader: boolean = false;
   categories: Category[] = [];
+  category: Category = { id: 0, name: '' }
 
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
     private router: Router,
     private toastr: ToastrService,
-  ) { 
+    private activatedRoute: ActivatedRoute,
+  ) {
     this.product = new Product();
   }
 
   ngOnInit(): void {
     this.findAllCategories();
+
+    let params: Observable<Params> = this.activatedRoute.params
+    params.subscribe(urlParams => {
+      this.id = urlParams['id'];
+      if (this.id) {
+        this.productService.findById(this.id).subscribe(response => {
+          this.product = response;
+          this.imageSrc = response.imgBase64
+          this.category = response.category
+
+        }, errorResponse => {
+          errorResponse = this.router.navigate(['/produtos']);
+        })
+      }
+    })
   }
+
 
   findAllCategories() {
     this.categoryService.findAll().subscribe(response => {
@@ -57,7 +77,7 @@ export class ProductRegisterComponent implements OnInit {
     }
   }
 
-  save() {
+  update() {
 
     this.loader = true
     const formData = new FormData();
@@ -65,16 +85,14 @@ export class ProductRegisterComponent implements OnInit {
     formData.append('name', this.product.name || '');
     formData.append('description', this.product.description || '');
     formData.append('price', this.product.price as any);
-    formData.append('category', this.product.category as any);
+    formData.append('category', this.product.category?.id as any);
 
-    this.productService.save(formData as Product).subscribe(() => {
-      this.toastr.success("Produto cadastrado.", "Sucesso");
+    this.productService.update(formData as Product, this.id).subscribe(() => {
+      this.toastr.success("Produto editado.", "Sucesso");
       this.router.navigate(['/produtos']);
     }, errorResponse => {
       this.loader = false
       this.toastr.error(errorResponse.error.message, "Erro");
     });
-
   }
-
 }

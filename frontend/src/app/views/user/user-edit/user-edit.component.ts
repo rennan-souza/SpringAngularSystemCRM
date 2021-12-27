@@ -44,7 +44,8 @@ export class UserEditComponent implements OnInit {
     })
   }
 
-  compareUserRoleAndRole(r: Role, ur: User): boolean {
+  
+  compareRoleAndUserRole(r: Role, ur: User): boolean {
     return r && ur ? r.id === ur.id : r === ur;
   }
 

@@ -9,6 +9,7 @@ import { CustomerListComponent } from './views/customer/customer-list/customer-l
 import { CustomerRegisterComponent } from './views/customer/customer-register/customer-register.component';
 import { DashboardComponent } from './views/home/dashboard/dashboard.component';
 import { BaseLayoutComponent } from './views/layout/base-layout/base-layout.component';
+import { ProductEditComponent } from './views/product/product-edit/product-edit.component';
 import { ProductListComponent } from './views/product/product-list/product-list.component';
 import { ProductRegisterComponent } from './views/product/product-register/product-register.component';
 import { UserDeleteComponent } from './views/user/user-delete/user-delete.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
 
       { path: 'produtos', component: ProductListComponent, canActivate: [ AuthGuard ] },
       { path: 'produtos/cadastrar', component: ProductRegisterComponent, canActivate: [ AuthGuard ] },
+      { path: 'produtos/editar/:id', component: ProductEditComponent, canActivate: [ AuthGuard ] },
     ]
   }
 ];

@@ -1,21 +1,20 @@
 <div class="container">
     <div class="page-title">
-        <h1>Cadastrar produto</h1>
+        <h1>Editar produto</h1>
         <button mat-flat-button color="accent" routerLink="/produtos">
             <mat-icon>arrow_back</mat-icon>
-            Votlar
+            Voltar
         </button>
     </div>
 
     <div class="form-container">
-        <form (ngSubmit)="save()" #form="ngForm">
+        <form (ngSubmit)="update()" #form="ngForm">
 
-         
             <img [src]="imageSrc" width="200">
             <div class="form-file-container">
                 <label>Selecione a foto do produto: *</label>
-                <input type="file" [(ngModel)]="product.file" class="form-file-input"
-                    name="file" (change)="onFileChange($event)" #file="ngModel" required>
+                <input type="file" [(ngModel)]="product.file" class="form-file-input" name="file"
+                    (change)="onFileChange($event)" #file="ngModel">
             </div>
 
             <mat-form-field appearance="outline" class="base-input">
@@ -25,18 +24,19 @@
 
             <mat-form-field class="example-full-width" appearance="outline" class="base-input">
                 <mat-label>Descrição</mat-label>
-                <textarea matInput [(ngModel)]="product.description" name="description" #validation="ngModel" required></textarea>
-              </mat-form-field>
+                <textarea matInput [(ngModel)]="product.description" name="description" #validation="ngModel"
+                    required></textarea>
+            </mat-form-field>
 
             <mat-form-field appearance="outline" class="base-input">
                 <mat-label>Price:</mat-label>
                 <input matInput type="text" [(ngModel)]="product.price" name="price" #validation="ngModel"
-                mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " required>
+                    mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " required>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="base-input">
                 <mat-label>Seleciona a categoria do produto:</mat-label>
-                <mat-select  [(ngModel)]="product.category" name="category" #validation="ngModel" required>
+                <mat-select [(value)]="category.id">
                     <mat-option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -44,7 +44,7 @@
             <div [hidden]="loader">
                 <button mat-flat-button color="primary" class="auth-button" [disabled]="!form.valid">
                     <mat-icon>save</mat-icon>
-                    Cadastrar
+                    Salvar
                 </button>
             </div>
 

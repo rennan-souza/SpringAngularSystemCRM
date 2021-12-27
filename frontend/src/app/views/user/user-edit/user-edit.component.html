@@ -28,7 +28,7 @@
 
             <mat-form-field appearance="outline" class="base-input">
                 <mat-label>Perfil</mat-label>
-                <mat-select multiple [compareWith]="compareUserRoleAndRole" [(ngModel)]="user.roles" name="roles"
+                <mat-select multiple [compareWith]="compareRoleAndUserRole" [(ngModel)]="user.roles" name="roles"
                     #validation="ngModel" required>
                     <mat-option *ngFor="let r of roles" [value]="r">{{ formatRole(r.authority) }}</mat-option>
                 </mat-select>
