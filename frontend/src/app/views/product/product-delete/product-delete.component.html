@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Tem certeza que deseja excluir o produto?</h1>
+    <img src="{{ imageSrc}}" alt="product" width="100">
+    <ul>
+        <li><strong>ID: </strong>{{ product.id }}</li>
+        <li><strong>Nome do produto: </strong>{{ product.name }}</li>
+        <li><strong>Descrição: </strong>{{ product.description }}</li>
+        <li><strong>price: </strong>{{ product.price | currency: 'BRL' }}</li>
+        <li><strong>Caregoria: </strong> <span class="info">{{ category.name }}</span> </li>
+    </ul>
+
+    <div style="margin-top: 10px; display: flex;">
+        <div [hidden]="loader">
+            <button mat-flat-button color="warn" (click)="delete()">
+                <mat-icon>delete</mat-icon>
+                Excluir
+            </button>
+        </div>
+
+        <div *ngIf="loader">
+            <button mat-flat-button color="primary" type="button" disabled>
+                Carregando...
+            </button>
+        </div>
+
+        <button mat-flat-button color="primary" routerLink="/produtos" style="margin-left: 5px;">
+            <mat-icon>cancel</mat-icon>
+            Cancelar
+        </button>
+    </div>
+</div>
