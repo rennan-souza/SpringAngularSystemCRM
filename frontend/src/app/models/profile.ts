@@ -5,3 +5,9 @@ export class Profile {
     email?: string;
     password?: string;
 }
+
+export class UpdatePassword {
+    password?: string;
+    newPassword?: string;
+    newPasswordConfirmation?: string;
+}

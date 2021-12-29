@@ -14,6 +14,7 @@ import { ProductEditComponent } from './views/product/product-edit/product-edit.
 import { ProductListComponent } from './views/product/product-list/product-list.component';
 import { ProductRegisterComponent } from './views/product/product-register/product-register.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { SecurityComponent } from './views/security/security.component';
 import { UserDeleteComponent } from './views/user/user-delete/user-delete.component';
 import { UserEditComponent } from './views/user/user-edit/user-edit.component';
 import { UserListComponent } from './views/user/user-list/user-list.component';
@@ -41,6 +42,8 @@ const routes: Routes = [
       { path: 'produtos/excluir/:id', component: ProductDeleteComponent, canActivate: [ AuthGuard ] },
 
       { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
+
+      { path: 'seguranca', component: SecurityComponent, canActivate: [ AuthGuard ] },
     ]
   }
 ];

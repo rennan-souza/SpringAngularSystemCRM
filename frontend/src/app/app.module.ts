@@ -37,6 +37,7 @@ import { ProductRegisterComponent } from './views/product/product-register/produ
 import { ProductEditComponent } from './views/product/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './views/product/product-delete/product-delete.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { SecurityComponent } from './views/security/security.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ProfileComponent } from './views/profile/profile.component';
     ProductEditComponent,
     ProductDeleteComponent,
     ProfileComponent,
+    SecurityComponent,
   ],
   imports: [
     BrowserModule,

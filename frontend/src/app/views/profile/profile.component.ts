@@ -38,6 +38,7 @@ export class ProfileComponent implements OnInit {
   }
 
   update() {
+    this.loader = true
     this.profileService.update(this.profile).subscribe(response => {
 
       this.userSigninData.username = this.profile.email ? this.profile.email : ''
@@ -49,6 +50,7 @@ export class ProfileComponent implements OnInit {
       });
 
       this.toastr.success("Dados editado", "Sucesso");
+      this.loader = false
       
     }, errorResponse => {
       this.loader = false

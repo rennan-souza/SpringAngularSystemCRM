@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="page-title">
+        <h1>Alterar senha</h1>
+        <button mat-flat-button color="accent" routerLink="/profile">
+            <mat-icon>arrow_back</mat-icon>
+            Voltar
+        </button>
+    </div>
+
+    <div class="form-container">
+        <form (ngSubmit)="update()" #form="ngForm">
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Nova senha:</mat-label>
+                <input matInput type="password" [(ngModel)]="obj.newPassword" name="newPassword" #validation="ngModel"
+                    required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Confirme a nova senha:</mat-label>
+                <input matInput type="password" [(ngModel)]="obj.newPasswordConfirmation" name="newPasswordConfirmation"
+                    #validation="ngModel" required>
+            </mat-form-field>
+            <div class="text-danger" *ngIf="obj.newPassword != obj.newPasswordConfirmation"
+                style="margin-top: -20px; margin-bottom: 20px;">
+                A confirmação da nova senha não confere
+            </div>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Senha atual para salvar:</mat-label>
+                <input matInput type="password" [(ngModel)]="obj.password" name="password" #validation="ngModel"
+                    required>
+            </mat-form-field>
+
+            <div [hidden]="loader">
+                <button mat-flat-button color="primary" class="auth-button"
+                    [disabled]="!form.valid || obj.newPassword != obj.newPasswordConfirmation">
+                    <mat-icon>save</mat-icon>
+                    Salvar
+                </button>
+            </div>
+
+            <div *ngIf="loader">
+                <button mat-flat-button color="primary" class="auth-button" type="button" disabled>
+                    Carregando...
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
