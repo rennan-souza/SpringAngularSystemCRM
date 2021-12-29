@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="page-title">
+        <h1>Meus dados</h1>
+        <button mat-flat-button color="accent" routerLink="/clientes">
+            <mat-icon>lock</mat-icon>
+            Alterar senha
+        </button>
+    </div>
+
+    <div class="form-container">
+        <form (ngSubmit)="update()" #form="ngForm">
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Email:</mat-label>
+                <input matInput type="email" [(ngModel)]="profile.email" name="email" #validation="ngModel" required disabled>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Nome:</mat-label>
+                <input matInput type="text" [(ngModel)]="profile.firstName" name="firstName" #validation="ngModel"
+                    required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Sobrenome:</mat-label>
+                <input matInput type="text" [(ngModel)]="profile.lastName" name="lastName" #validation="ngModel"
+                    required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="base-input">
+                <mat-label>Senha atual para salvar:</mat-label>
+                <input matInput type="password" [(ngModel)]="profile.password" name="password" #validation="ngModel"
+                    required>
+            </mat-form-field>
+
+            <div [hidden]="loader">
+                <button mat-flat-button color="primary" class="auth-button" [disabled]="!form.valid">
+                    <mat-icon>save</mat-icon>
+                    Salvar
+                </button>
+            </div>
+
+            <div *ngIf="loader">
+                <button mat-flat-button color="primary" class="auth-button" type="button" disabled>
+                    Carregando...
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -36,7 +36,7 @@ import { ProductListComponent } from './views/product/product-list/product-list.
 import { ProductRegisterComponent } from './views/product/product-register/product-register.component';
 import { ProductEditComponent } from './views/product/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './views/product/product-delete/product-delete.component';
-
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +56,7 @@ import { ProductDeleteComponent } from './views/product/product-delete/product-d
     ProductRegisterComponent,
     ProductEditComponent,
     ProductDeleteComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +89,7 @@ import { ProductDeleteComponent } from './views/product/product-delete/product-d
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
