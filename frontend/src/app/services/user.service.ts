@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User, UserPage } from '../models/user';
+import { User, UserCreateNewPassword, UserForgotPassword, UserPage } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,14 @@ export class UserService {
 
   delete(id: number) {
     return this.http.delete<User>(`${this.apiBaseUrl}/users/${id}`);
+  }
+
+
+  forgotPassword(email: UserForgotPassword) {
+    return this.http.post<any>(`${this.apiBaseUrl}/users/recovery`, email);
+  }
+
+  createNewPassword(obj: UserCreateNewPassword): Observable<any> {
+    return this.http.post<any>(`${this.apiBaseUrl}/users/reset`, obj);
   }
 }

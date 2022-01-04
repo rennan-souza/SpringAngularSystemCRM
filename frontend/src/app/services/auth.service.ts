@@ -11,6 +11,7 @@ import { UserSigninData } from '../models/userSigninData';
 export class AuthService {
 
   urlBaseSignin: string = environment.urlBaseSignin;
+  apiBaseUrl: string = environment.apiUrlBase;
   clientId: string = environment.clientId;
   clientSecret: string = environment.clientSecret;
   jwtHelper: JwtHelperService = new JwtHelperService;
@@ -91,5 +92,4 @@ export class AuthService {
     }
     return null;
   }
-
 }

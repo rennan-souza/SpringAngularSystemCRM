@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
+import { CreateNewPasswordComponent } from './views/auth/create-new-password/create-new-password.component';
+import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
 import { LoginComponent } from './views/auth/login/login.component';
 import { CustomerDeleteComponent } from './views/customer/customer-delete/customer-delete.component';
 import { CustomerEditComponent } from './views/customer/customer-edit/customer-edit.component';
@@ -22,6 +24,8 @@ import { UserRegisterComponent } from './views/user/user-register/user-register.
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'esqueci-minha-senha', component: ForgotPasswordComponent },
+  { path: 'criar-nova-senha', component: CreateNewPasswordComponent },
   {
     path: '', component: BaseLayoutComponent, children: [
       { path: '', component: DashboardComponent, canActivate: [ AuthGuard ] },

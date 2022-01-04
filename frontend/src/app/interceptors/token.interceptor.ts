@@ -12,6 +12,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   constructor() {}
 
+
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     const tokenString = localStorage.getItem('token');
@@ -27,7 +28,8 @@ export class TokenInterceptor implements HttpInterceptor {
         }
       })
     }
-
+    
     return next.handle(request);
   }
+
 }

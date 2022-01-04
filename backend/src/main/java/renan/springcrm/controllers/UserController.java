@@ -64,8 +64,8 @@ public class UserController {
 	
 	@PostMapping(value = "/recovery")
 	public ResponseEntity<String> recoveryPassword(@RequestBody UserDTO dto) {
-		String response = userService.recoveryPassword(dto.getEmail());
-		return ResponseEntity.ok(response);
+		userService.recoveryPassword(dto.getEmail());
+		return ResponseEntity.noContent().build();
 	}
 	
 	@PostMapping(value = "/reset")

@@ -19,3 +19,12 @@ export interface UserPage {
   numberOfElements?: number;
   empty?: boolean;
 }
+
+export class UserForgotPassword {
+  email?: string;
+}
+
+export class UserCreateNewPassword {
+  code?: string;
+  password?: string;
+}

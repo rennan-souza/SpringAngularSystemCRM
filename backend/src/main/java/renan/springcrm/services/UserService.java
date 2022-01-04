@@ -155,14 +155,13 @@ public class UserService implements UserDetailsService {
 	}
 	
 	@Transactional(readOnly = false)
-	public String recoveryPassword(String email) {
+	public void recoveryPassword(String email) {
 		
-		String response = "Se o email informado estiver correto, em poucos minutos você receberá o código para criar a nova senha";
 		
 		User user = userRepository.findByEmail(email);
 		
 		if (user == null) {
-			return response;
+			return;
 		}
 		
 		String code = RandomStringUtils.randomNumeric(10);
@@ -173,8 +172,7 @@ public class UserService implements UserDetailsService {
 		userPasswordRecoveryCodeRepository.save(userPasswordRecoveryCode);
 		
 		mailService.sendRecoverPassword(user.getFirstName(), user.getLastName(), user.getEmail(), code);
-		
-		return response;
+
 	}
 	
 	@Transactional(readOnly = false)
@@ -182,11 +180,13 @@ public class UserService implements UserDetailsService {
 		UserPasswordRecoveryCode codeExists = userPasswordRecoveryCodeRepository.findByCode(dto.getCode());
 		
 		if (codeExists == null) {
-			throw new ResourceBadRequestException("Código não encontrado");
+			//throw new ResourceBadRequestException("Código não encontrado");
+			throw new ResourceBadRequestException("Código inválido ou expirado");
 		}
 		
 		if (codeExists.getExpiresAt().isBefore(Instant.now())) {
-			throw new ResourceBadRequestException("Código expirado");
+			//throw new ResourceBadRequestException("Código expirado");
+			throw new ResourceBadRequestException("Código inválido ou expirado");
 		}
 		
 		User entity = userRepository.getOne(codeExists.getUserId());

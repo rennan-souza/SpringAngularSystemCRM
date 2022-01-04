@@ -38,6 +38,8 @@ import { ProductEditComponent } from './views/product/product-edit/product-edit.
 import { ProductDeleteComponent } from './views/product/product-delete/product-delete.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { SecurityComponent } from './views/security/security.component';
+import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
+import { CreateNewPasswordComponent } from './views/auth/create-new-password/create-new-password.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { SecurityComponent } from './views/security/security.component';
     ProductDeleteComponent,
     ProfileComponent,
     SecurityComponent,
+    ForgotPasswordComponent,
+    CreateNewPasswordComponent,
   ],
   imports: [
     BrowserModule,
