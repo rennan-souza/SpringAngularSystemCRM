@@ -25,7 +25,7 @@ export class CreateNewPasswordComponent implements OnInit {
 
   submit() {
     this.service.createNewPassword(this.userCreateNewPassword).subscribe((response) => {
-      this.toastr.success("Senha alterada com sucesso", "Sucesso");
+      this.toastr.success("Senha alterada", "Sucesso");
       this.router.navigate(['/login'])
     }, errorResponse => {
       this.toastr.error(errorResponse.error.message, "Erro");

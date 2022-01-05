@@ -40,6 +40,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { SecurityComponent } from './views/security/security.component';
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './views/auth/create-new-password/create-new-password.component';
+import { NotFoundComponent } from './views/error/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CreateNewPasswordComponent } from './views/auth/create-new-password/cre
     SecurityComponent,
     ForgotPasswordComponent,
     CreateNewPasswordComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

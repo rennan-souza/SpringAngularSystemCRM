@@ -9,6 +9,7 @@ import { CustomerDeleteComponent } from './views/customer/customer-delete/custom
 import { CustomerEditComponent } from './views/customer/customer-edit/customer-edit.component';
 import { CustomerListComponent } from './views/customer/customer-list/customer-list.component';
 import { CustomerRegisterComponent } from './views/customer/customer-register/customer-register.component';
+import { NotFoundComponent } from './views/error/not-found/not-found.component';
 import { DashboardComponent } from './views/home/dashboard/dashboard.component';
 import { BaseLayoutComponent } from './views/layout/base-layout/base-layout.component';
 import { ProductDeleteComponent } from './views/product/product-delete/product-delete.component';
@@ -49,7 +50,10 @@ const routes: Routes = [
 
       { path: 'seguranca', component: SecurityComponent, canActivate: [ AuthGuard ] },
     ]
-  }
+  },
+
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
